@@ -1,0 +1,89 @@
+{
+  "name": "Template-RBX",
+  "tree": {
+    "$className": "DataModel",
+
+   "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Libraries": {
+        "$className": "Folder",
+        "$path": "src/libs",
+        "$ignoreUnknownInstances": true
+      },
+      "Shared": {
+        "$className": "Folder",
+        "$path": "src/shared",
+        "$ignoreUnknownInstances": true
+      },
+      "Packages": {
+         "$className": "Folder",
+        "$path": "Packages"
+      },
+
+      "Events": {
+        "$className": "Folder",
+        "GENERAL": {
+          "$className":"RemoteEvent"
+        },
+        "$ignoreUnknownInstances": true
+      },
+      "Assets": {
+        "$className": "Folder",
+        "Models": {
+          "$className":"Folder",
+          "$ignoreUnknownInstances": true
+        },
+
+        "ScreenGui": {
+          "$className":"Folder",
+          "$ignoreUnknownInstances": true
+        },
+
+        "Animations": {
+          "$className":"Folder",
+          "$ignoreUnknownInstances": true
+        },
+
+        "Sounds": {
+          "$className":"Folder",
+          "$ignoreUnknownInstances": true
+        },
+
+        "Effects": {
+          "$className":"Folder",
+          "$ignoreUnknownInstances": true
+        },
+
+        "$ignoreUnknownInstances": true
+      }
+
+    },
+
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "$path": "src/server"
+    },
+    
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "Client": {
+          "$className": "Folder",
+          "$path": "src/client"
+        },
+
+        "Interface":{
+          "$path": "src/interface",
+          "$className":"Folder"
+      },
+      "$ignoreUnknownInstances": true
+      }
+    },
+    
+    "SoundService": {
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    }
+  }
+}
