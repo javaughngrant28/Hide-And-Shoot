@@ -24,7 +24,6 @@ ToolDetectore.AddedSignal:Connect(function(tool: Tool)
 end)
 
 ToolDetectore.EquippedSignal:Connect(function(tool: Tool)
-    local mouseClickConnection: RBXScriptConnection
     local activedConnection: RBXScriptConnection
     local destroyConnection: RBXScriptConnection
     local unequippedConnection: RBXScriptConnection
@@ -34,19 +33,15 @@ ToolDetectore.EquippedSignal:Connect(function(tool: Tool)
 
     local function Fire()
         local rayPosition = Mouse.GetPosition(rayCastPerms)
-        ShootEvent:FireServer(attachment.WorldCFrame,rayPosition)
+        ShootEvent:FireServer(attachment.WorldCFrame.Position,rayPosition)
     end
 
     activedConnection = tool.Activated:Connect(function()
-        mouseClickConnection = Mouse.LeftClick:Connect(function(userInputState)
-            if userInputState ~= Enum.UserInputState.End then return end
-            Throttle('FireGun',GunConfig.ShootDebounce,Fire)
-        end)
+        Throttle('FireGun',GunConfig.ShootDebounce,Fire)
     end)
 
     local function DestroyConnections()
         activedConnection:Disconnect()
-        mouseClickConnection:Disconnect()
         unequippedConnection:Disconnect()
         destroyConnection:Disconnect()
     end
