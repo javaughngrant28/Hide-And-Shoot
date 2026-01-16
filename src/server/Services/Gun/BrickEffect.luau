@@ -31,6 +31,7 @@ local function CreareBrick(originPosition: Vector3, targetPsotion: Vector3)
     local tween = TweenService:Create(brick,tweenInfo,{Transparency = 1})
     tween.Completed:Once(function()
         tween:Destroy()
+        brick:Destroy()
     end)
 
     tween:Play()
