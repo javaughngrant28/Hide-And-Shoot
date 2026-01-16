@@ -10,12 +10,12 @@ local function Shoot(player: Player, originPosition: Vector3, targetPsotion: Vec
     BrickEffect.Fire(originPosition,targetPsotion)
     
     if not rayInstance then return end
-    GunHitSound.Play(targetPsotion)
-
+    
     local humanoid = rayInstance.Parent:FindFirstChildWhichIsA('Humanoid') :: Humanoid
     if not humanoid then return end
-
+    
     humanoid.Health = 0
+    GunHitSound.Play(targetPsotion)
 end
 
 ShootEvent.OnServerEvent:Connect(Shoot)
