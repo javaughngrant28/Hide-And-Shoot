@@ -3,7 +3,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ToolDetectore = require(script.Parent.Parent.Modules.ToolDetectore)
 local Mouse = require(script.Parent.Parent.Modules.Mouse)
-local Observers = require(game.ReplicatedStorage.Libraries.Observers)
+local Throttle = require(game.ReplicatedStorage.Libraries.Throttle)
+local GunConfig = require(game.ReplicatedStorage.Shared.Configs.GunConfig)
 
 local Player = Players.LocalPlayer
 local ShootEvent = ReplicatedStorage.Events:WaitForChild('Shoot')
@@ -31,12 +32,15 @@ ToolDetectore.EquippedSignal:Connect(function(tool: Tool)
     local attachment = tool:FindFirstChildWhichIsA('Attachment',true)
     assert(attachment,`{tool} Has no attachment`)
 
+    local function Fire()
+        local rayPosition = Mouse.GetPosition(rayCastPerms)
+        ShootEvent:FireServer(attachment.WorldCFrame,rayPosition)
+    end
+
     activedConnection = tool.Activated:Connect(function()
         mouseClickConnection = Mouse.LeftClick:Connect(function(userInputState)
             if userInputState ~= Enum.UserInputState.End then return end
-
-            local rayPosition = Mouse.GetPosition(rayCastPerms)
-            ShootEvent:FireServer(attachment.WorldCFrame,rayPosition)
+            Throttle('FireGun',GunConfig.ShootDebounce,Fire)
         end)
     end)
 
