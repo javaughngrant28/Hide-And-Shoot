@@ -25,6 +25,9 @@
         "GENERAL": {
           "$className":"RemoteEvent"
         },
+        "Shoot": {
+          "$className":"RemoteEvent"
+        },
         "$ignoreUnknownInstances": true
       },
       "Assets": {

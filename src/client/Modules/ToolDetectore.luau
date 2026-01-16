@@ -1,6 +1,9 @@
 local Players = game:GetService("Players")
-local MaidModule = require(game.ReplicatedStorage.Shared.Libraries.Maid)
-local Signal = require(game.ReplicatedStorage.Shared.Libraries.Signal)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local MaidModule = require(ReplicatedStorage.Libraries.Maid)
+local Signal = require(ReplicatedStorage.Libraries.Signal)
+
 
 local Player = Players.LocalPlayer
 Player:WaitForChild('Backpack')
