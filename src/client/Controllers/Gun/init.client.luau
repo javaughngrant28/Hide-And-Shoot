@@ -5,6 +5,7 @@ local ToolDetectore = require(script.Parent.Parent.Modules.ToolDetectore)
 local Mouse = require(script.Parent.Parent.Modules.Mouse)
 local Throttle = require(game.ReplicatedStorage.Libraries.Throttle)
 local GunConfig = require(game.ReplicatedStorage.Shared.Configs.GunConfig)
+local ShootSound = require(script.ShootSound)
 
 local Player = Players.LocalPlayer
 local ShootEvent = ReplicatedStorage.Events:WaitForChild('Shoot')
@@ -35,6 +36,7 @@ ToolDetectore.EquippedSignal:Connect(function(tool: Tool)
         local rayPosition = Mouse.GetPosition(rayCastPerms)
         local rayInstance = Mouse.GetTarget(rayCastPerms)
         ShootEvent:FireServer(attachment.WorldCFrame.Position,rayPosition,rayInstance)
+        ShootSound.Fire()
     end
 
     activedConnection = tool.Activated:Connect(function()
