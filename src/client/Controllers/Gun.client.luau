@@ -33,7 +33,8 @@ ToolDetectore.EquippedSignal:Connect(function(tool: Tool)
 
     local function Fire()
         local rayPosition = Mouse.GetPosition(rayCastPerms)
-        ShootEvent:FireServer(attachment.WorldCFrame.Position,rayPosition)
+        local rayInstance = Mouse.GetTarget(rayCastPerms)
+        ShootEvent:FireServer(attachment.WorldCFrame.Position,rayPosition,rayInstance)
     end
 
     activedConnection = tool.Activated:Connect(function()
